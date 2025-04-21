@@ -2540,7 +2540,7 @@ export default function Home() {
                   display: { xs: 'none', sm: 'block' }, // Hide on mobile, show on tablet and up
                 }}
               >
-                Film Production AI Assistant
+                Think AI
               </Typography>
               <Typography
                 variant="h6"
@@ -2559,7 +2559,7 @@ export default function Home() {
                   display: { xs: 'block', sm: 'none' }, // Show on mobile, hide on tablet and up
                 }}
               >
-                Film AI
+                Think AI
               </Typography>
             </Box>
             <IconButton
@@ -3002,7 +3002,7 @@ export default function Home() {
                   letterSpacing: '0.02em',
                 }}
               >
-                Film Production AI Assistant | Powered by OpenAI GPT-4.1 Mini
+                Think AI | Powered by OpenAI
               </Typography>
             </Box>
           </Box>
