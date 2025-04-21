@@ -1008,7 +1008,7 @@ export default function Home() {
                   letterSpacing: '-0.02em',
                 }}
               >
-                Welcome to the Film Production AI Assistant
+                Welcome to Think AI
               </Typography>
               <Typography
                 variant="h6"
@@ -1021,7 +1021,7 @@ export default function Home() {
                   lineHeight: 1.6,
                 }}
               >
-                Transform your script into a complete production plan with our AI-powered tools
+                Transform your ideas into reality with our AI-powered tools
               </Typography>
 
               <Grid container spacing={3} justifyContent="center" sx={{ mb: 4 }}>
@@ -2213,12 +2213,12 @@ export default function Home() {
               System Synchronization and Overview
             </Typography>
             <Typography variant="body1" sx={{ mb: 2 }}>
-              Comprehensive overview of your entire production.
+              Comprehensive overview of your project.
             </Typography>
 
             <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
               <Typography variant="h5" gutterBottom>
-                Production Overview
+                Project Overview
               </Typography>
               <Grid container spacing={3}>
                 <Grid size={{ xs: 12, md: 4 }}>
@@ -2262,7 +2262,7 @@ export default function Home() {
 
             <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
               <Typography variant="h5" gutterBottom>
-                Production Timeline
+                Project Timeline
               </Typography>
               <Grid container spacing={2}>
                 <Grid size={{ xs: 12, md: 6 }}>
@@ -2321,7 +2321,7 @@ export default function Home() {
               API Logs and Analytics
             </Typography>
             <Typography variant="body1" sx={{ mb: 2 }}>
-              Detailed logs of API calls made during the production process.
+              Detailed logs of API calls made during the process.
             </Typography>
 
             {isLoading ? (
