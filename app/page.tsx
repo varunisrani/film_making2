@@ -3002,7 +3002,7 @@ export default function Home() {
                   letterSpacing: '0.02em',
                 }}
               >
-                Think AI | Powered by OpenAI
+                Think AI
               </Typography>
             </Box>
           </Box>
