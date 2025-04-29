@@ -121,7 +121,7 @@ const darkThemeSettings = createTheme({
 });
 
 // API endpoint
-const API_URL = 'http://localhost:8000/api'; // Update this to the correct port where your API is running
+const API_URL = 'https://varun324242-sjuu.hf.space/api'; // Update this to the correct port where your API is running
 const PLACEHOLDER_URL = '/placeholders/placeholder.svg';
 
 // We're using the TabPanel from our custom components, so we don't need to define it here
@@ -2669,6 +2669,27 @@ export default function Home() {
                       {characterBreakdownView === 'profiles' && (
                         // Existing Character Profiles content
                         <Box>
+                          {/* Add regenerate button at the top */}
+                          <Box sx={{ mb: 3, display: 'flex', justifyContent: 'flex-end' }}>
+                            <Button
+                              variant="contained"
+                              onClick={analyzeCharacters}
+                              disabled={loading}
+                              startIcon={<Refresh />}
+                              sx={{
+                                background: theme.palette.mode === 'dark'
+                                  ? 'linear-gradient(90deg, #738bff, #ff5eb1)'
+                                  : 'linear-gradient(90deg, #4361ee, #f72585)',
+                                '&:hover': {
+                                  background: theme.palette.mode === 'dark'
+                                    ? 'linear-gradient(90deg, #8599ff, #ff6eb8)'
+                                    : 'linear-gradient(90deg, #5472ff, #f83a91)',
+                                }
+                              }}
+                            >
+                              Regenerate Character Breakdown
+                            </Button>
+                          </Box>
                           {selectedCharacter ? (
                             // Detailed Character Profile View content
                             <Box>
@@ -3569,6 +3590,28 @@ export default function Home() {
                     </Box>
                   ) : (
                     <Box>
+                      {/* Add regenerate button at the top */}
+                      <Box sx={{ mb: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <Typography variant="h6">Calendar View</Typography>
+                        <Button
+                          variant="contained"
+                          onClick={createSchedule}
+                          disabled={loading}
+                          startIcon={<Refresh />}
+                          sx={{
+                            background: theme.palette.mode === 'dark'
+                              ? 'linear-gradient(90deg, #738bff, #ff5eb1)'
+                              : 'linear-gradient(90deg, #4361ee, #f72585)',
+                            '&:hover': {
+                              background: theme.palette.mode === 'dark'
+                                ? 'linear-gradient(90deg, #8599ff, #ff6eb8)'
+                                : 'linear-gradient(90deg, #5472ff, #f83a91)',
+                            }
+                          }}
+                        >
+                          Regenerate Schedule
+                        </Button>
+                      </Box>
                       {/* Schedule View Tabs */}
                       <Tabs
                         value={scheduleView}
