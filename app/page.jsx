@@ -1316,489 +1316,187 @@ export default function Home() {
 
           {/* Tab Panels */}
           <TabPanel value={currentTab} index={0}>
-            {/* Upload Script Tab - Redesigned UI */}
-            <Box sx={{ maxWidth: 1200, margin: '0 auto' }}>
-              <Typography 
-                variant="h3" 
-                gutterBottom 
-                fontWeight={800} 
-                textAlign="center"
-                sx={{
+            {/* Upload Script Tab */}
+            <Box style={{ display: 'flex', flexDirection: 'column', gap: 3, maxWidth: 1200, marginLeft: 'auto' }}>
+              <Paper
+                style={{
+                  padding: '16px',
+                  textAlign: 'center',
+                  backgroundColor: darkMode
+                    ? 'rgba(19, 47, 76, 0.5)'
+                    : 'rgba(255, 255, 255, 0.8)',
+                  borderRadius: 4,
+                  backdropFilter: 'blur(10px)',
+                }}
+              >
+                <Typography variant="h4" gutterBottom fontWeight={700} style={{
                   background: darkMode
                     ? 'linear-gradient(90deg, #a4b8ff, #ff90d1)'
                     : 'linear-gradient(90deg, #4361ee, #f72585)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
-                  mb: 4,
-                  mt: 2
-                }}
-              >
-                Welcome to the Film Production AI Assistant
-              </Typography>
-              
-              <Typography 
-                variant="h6" 
-                textAlign="center" 
-                sx={{ 
-                  mb: 6, 
-                  maxWidth: 800, 
-                  mx: 'auto',
-                  color: darkMode ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.7)'
-                }}
-              >
-                Transform your script into a complete production plan with our AI-powered tools
-              </Typography>
-              
-              {/* Features Grid */}
-              <Grid container spacing={4} sx={{ mb: 6 }}>
-                <Grid item xs={12} sm={6} md={3} sx={{ textAlign: 'center' }}>
-                  <Box sx={{ 
-                    width: 80, 
-                    height: 80, 
-                    borderRadius: '50%', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center',
-                    background: darkMode
-                      ? 'rgba(115, 139, 255, 0.15)'
-                      : 'rgba(67, 97, 238, 0.1)',
-                    mx: 'auto',
-                    mb: 2
-                  }}>
-                    <TextFields sx={{ fontSize: 36, color: darkMode ? '#a4b8ff' : '#4361ee' }} />
-                  </Box>
-                  <Typography variant="h6" gutterBottom fontWeight={600}>
-                    Scene Analysis
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    Detailed breakdown of each scene
-                  </Typography>
-                </Grid>
-                
-                <Grid item xs={12} sm={6} md={3} sx={{ textAlign: 'center' }}>
-                  <Box sx={{ 
-                    width: 80, 
-                    height: 80, 
-                    borderRadius: '50%', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center',
-                    background: darkMode
-                      ? 'rgba(115, 139, 255, 0.15)'
-                      : 'rgba(67, 97, 238, 0.1)',
-                    mx: 'auto',
-                    mb: 2
-                  }}>
-                    <CalendarMonth sx={{ fontSize: 36, color: darkMode ? '#a4b8ff' : '#4361ee' }} />
-                  </Box>
-                  <Typography variant="h6" gutterBottom fontWeight={600}>
-                    Scheduling
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    Optimized shooting schedule
-                  </Typography>
-                </Grid>
-                
-                <Grid item xs={12} sm={6} md={3} sx={{ textAlign: 'center' }}>
-                  <Box sx={{ 
-                    width: 80, 
-                    height: 80, 
-                    borderRadius: '50%', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center',
-                    background: darkMode
-                      ? 'rgba(115, 139, 255, 0.15)'
-                      : 'rgba(67, 97, 238, 0.1)',
-                    mx: 'auto',
-                    mb: 2
-                  }}>
-                    <AttachMoney sx={{ fontSize: 36, color: darkMode ? '#a4b8ff' : '#4361ee' }} />
-                  </Box>
-                  <Typography variant="h6" gutterBottom fontWeight={600}>
-                    Budgeting
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    Comprehensive budget estimates
-                  </Typography>
-                </Grid>
-                
-                <Grid item xs={12} sm={6} md={3} sx={{ textAlign: 'center' }}>
-                  <Box sx={{ 
-                    width: 80, 
-                    height: 80, 
-                    borderRadius: '50%', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center',
-                    background: darkMode
-                      ? 'rgba(115, 139, 255, 0.15)'
-                      : 'rgba(67, 97, 238, 0.1)',
-                    mx: 'auto',
-                    mb: 2
-                  }}>
-                    <People sx={{ fontSize: 36, color: darkMode ? '#a4b8ff' : '#4361ee' }} />
-                  </Box>
-                  <Typography variant="h6" gutterBottom fontWeight={600}>
-                    Characters
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    Complete character breakdowns
-                  </Typography>
-                </Grid>
-              </Grid>
-              
-              {/* Upload Options */}
-              <Box sx={{ 
-                display: 'flex', 
-                flexDirection: {xs: 'column', md: 'row'}, 
-                gap: 4,
-                alignItems: 'stretch',
-                mb: 4
-              }}>
-                {/* File Upload Section */}
-                <Paper 
-                  elevation={0}
-                  sx={{ 
-                    flex: 1,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    p: 4, 
-                    borderRadius: 3,
-                    background: darkMode 
-                      ? 'rgba(19, 47, 76, 0.4)'
-                      : 'rgba(255, 255, 255, 0.7)',
-                    backdropFilter: 'blur(20px)',
-                    border: `1px solid ${darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'}`,
-                    position: 'relative',
-                    overflow: 'hidden',
-                    transition: 'all 0.3s ease',
-                    boxShadow: darkMode
-                      ? '0 4px 20px rgba(0, 0, 0, 0.2)'
-                      : '0 4px 20px rgba(0, 0, 0, 0.08)',
-                  }}
-                >
-                  <Box sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '4px',
-                    background: 'linear-gradient(90deg, #4361ee, #7209b7)'
-                  }} />
-                  
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                    <Box 
-                      component="span" 
-                      sx={{ 
-                        borderRadius: '50%',
-                        bgcolor: darkMode ? 'rgba(67, 97, 238, 0.2)' : 'rgba(67, 97, 238, 0.1)',
-                        width: 40,
-                        height: 40,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mr: 2
-                      }}
-                    >
-                      <Description sx={{ color: darkMode ? '#a4b8ff' : '#4361ee', fontSize: 22 }} />
-                    </Box>
-                    <Typography variant="h5" fontWeight={700}>
-                      Upload your script file
-                    </Typography>
-                  </Box>
-                  
-                  <Box
+                  marginBottom: 4
+                }}>
+                  Add Your Script
+                </Typography>
+
+                <Box style={{ marginBottom: 4 }}>
+                  <Button
+                    variant={inputMethod === 'file' ? 'contained' : 'outlined'}
+                    onClick={() => setInputMethod('file')}
+                    style={{ marginRight: 2 }}
+                  >
+                    Upload File
+                  </Button>
+                  <Button
+                    variant={inputMethod === 'text' ? 'contained' : 'outlined'}
+                    onClick={() => setInputMethod('text')}
+                  >
+                    Enter Text
+                  </Button>
+                </Box>
+
+                {inputMethod === 'file' ? (
+                  <Paper
                     {...getRootProps()}
-                    sx={{
-                      flex: 1,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      py: 5,
-                      px: 3,
+                    style={{
+                      padding: '24px',
                       textAlign: 'center',
                       cursor: 'pointer',
-                      backgroundColor: darkMode
+                      backgroundColor: theme.palette.mode === 'dark'
                         ? 'rgba(19, 47, 76, 0.3)'
                         : 'rgba(255, 255, 255, 0.5)',
                       border: '2px dashed',
-                      borderColor: darkMode ? 'rgba(115, 139, 255, 0.3)' : 'rgba(67, 97, 238, 0.2)',
-                      borderRadius: 2,
+                      borderColor: 'primary.main',
+                      borderRadius: 4,
                       transition: 'all 0.3s ease',
                       '&:hover': {
-                        borderColor: darkMode ? '#a4b8ff' : '#4361ee',
-                        bgcolor: darkMode
-                          ? 'rgba(115, 139, 255, 0.08)'
-                          : 'rgba(67, 97, 238, 0.04)',
-                        transform: 'translateY(-2px)',
+                        transform: 'translateY(-5px)',
+                        boxShadow: theme.palette.mode === 'dark'
+                          ? '0 8px 25px rgba(115, 139, 255, 0.2)'
+                          : '0 8px 25px rgba(67, 97, 238, 0.15)',
                       },
                     }}
                   >
                     <input {...getInputProps()} />
                     <Box
-                      component="div" 
-                      sx={{
+                      style={{
+                        width: 80,
+                        height: 80,
                         borderRadius: '50%',
-                        width: 90,
-                        height: 90,
+                        backgroundColor: theme.palette.mode === 'dark'
+                          ? 'rgba(115, 139, 255, 0.1)'
+                          : 'rgba(67, 97, 238, 0.05)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        bgcolor: darkMode
-                          ? 'rgba(115, 139, 255, 0.08)'
-                          : 'rgba(67, 97, 238, 0.05)',
-                        mb: 3,
+                        marginLeft: 'auto',
+                        marginBottom: 3,
                       }}
                     >
-                      <CloudUpload sx={{ fontSize: 44, color: darkMode ? '#a4b8ff' : '#4361ee' }} />
+                      <UploadFile style={{ fontSize: 40, color: 'primary.main' }} />
                     </Box>
-                    <Typography variant="h6" fontWeight={600} gutterBottom>
-                      Drag & drop your file here
+                    <Typography variant="h5" gutterBottom fontWeight={600}>
+                      Drag and drop your script file here
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" sx={{ mb: 3 }}>
-                      or click to browse files
+                    <Typography variant="body1" color="textSecondary" style={{ marginBottom: 3 }}>
+                      or click to select a file
                     </Typography>
                     <Button
                       variant="contained"
                       startIcon={<UploadFile />}
-                      sx={{
-                        borderRadius: 6,
-                        px: 3,
-                        py: 1,
-                        background: 'linear-gradient(90deg, #4361ee, #7209b7)',
-                        boxShadow: '0 4px 14px rgba(67, 97, 238, 0.3)',
+                      style={{
+                        background: theme.palette.mode === 'dark'
+                          ? 'linear-gradient(90deg, #738bff, #ff5eb1)'
+                          : 'linear-gradient(90deg, #4361ee, #f72585)',
                         '&:hover': {
-                          background: 'linear-gradient(90deg, #4361ee, #5a189a)',
-                          boxShadow: '0 6px 20px rgba(67, 97, 238, 0.4)',
+                          background: theme.palette.mode === 'dark'
+                            ? 'linear-gradient(90deg, #5a6ecc, #cc4a8e)'
+                            : 'linear-gradient(90deg, #354db8, #c51e6a)',
                         },
-                        transition: 'all 0.3s ease'
                       }}
                     >
                       Choose File
                     </Button>
-                  </Box>
-                  
-                  <Box sx={{ mt: 2, display: 'flex', alignItems: 'center' }}>
-                    <Warning sx={{ fontSize: 16, color: darkMode ? '#a4b8ff' : '#4361ee', mr: 1, opacity: 0.7 }} />
-                    <Typography variant="caption" color="textSecondary">
-                      Supported format: .txt (PDF and DOCX support coming soon)
-                    </Typography>
-                  </Box>
-                </Paper>
-                
-                {/* Text Input Section */}
-                <Paper 
-                  elevation={0}
-                  sx={{ 
-                    flex: 1,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    p: 4, 
-                    borderRadius: 3,
-                    background: darkMode 
-                      ? 'rgba(19, 47, 76, 0.4)'
-                      : 'rgba(255, 255, 255, 0.7)',
-                    backdropFilter: 'blur(20px)',
-                    border: `1px solid ${darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'}`,
-                    position: 'relative',
-                    overflow: 'hidden',
-                    transition: 'all 0.3s ease',
-                    boxShadow: darkMode
-                      ? '0 4px 20px rgba(0, 0, 0, 0.2)'
-                      : '0 4px 20px rgba(0, 0, 0, 0.08)',
-                  }}
-                >
-                  <Box sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '4px',
-                    background: 'linear-gradient(90deg, #7209b7, #4361ee)'
-                  }} />
-                  
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                    <Box 
-                      component="span" 
-                      sx={{ 
-                        borderRadius: '50%',
-                        bgcolor: darkMode ? 'rgba(67, 97, 238, 0.2)' : 'rgba(67, 97, 238, 0.1)',
-                        width: 40,
-                        height: 40,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mr: 2
+                  </Paper>
+                ) : (
+                  <Box style={{ width: '100%', maxWidth: 800, marginLeft: 'auto' }}>
+                    <TextField
+                      multiline
+                      rows={12}
+                      fullWidth
+                      value={scriptText}
+                      onChange={(e) => setScriptText(e.target.value)}
+                      placeholder="Paste or type your script here..."
+                      style={{
+                        marginBottom: 3,
+                        '& .MuiOutlinedInput-root': {
+                          backgroundColor: theme.palette.mode === 'dark'
+                            ? 'rgba(19, 47, 76, 0.3)'
+                            : 'rgba(255, 255, 255, 0.5)',
+                          backdropFilter: 'blur(10px)',
+                        }
+                      }}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={handleTextSubmit}
+                      disabled={loading || !scriptText.trim()}
+                      style={{
+                        background: theme.palette.mode === 'dark'
+                          ? 'linear-gradient(90deg, #738bff, #ff5eb1)'
+                          : 'linear-gradient(90deg, #4361ee, #f72585)',
+                        '&:hover': {
+                          background: theme.palette.mode === 'dark'
+                            ? 'linear-gradient(90deg, #5a6ecc, #cc4a8e)'
+                            : 'linear-gradient(90deg, #354db8, #c51e6a)',
+                        },
                       }}
                     >
-                      <TextFields sx={{ color: darkMode ? '#a4b8ff' : '#4361ee', fontSize: 22 }} />
-                    </Box>
-                    <Typography variant="h5" fontWeight={700}>
-                      Or paste your script here
+                      Analyze Script
+                    </Button>
+                  </Box>
+                )}
+              </Paper>
+
+              {/* Quick Tips Section */}
+              <Paper style={{
+                padding: '16px',
+                backgroundColor: theme.palette.mode === 'dark'
+                  ? 'rgba(19, 47, 76, 0.5)'
+                  : 'rgba(255, 255, 255, 0.8)',
+                borderRadius: 4,
+                backdropFilter: 'blur(10px)',
+              }}>
+                <Typography variant="h6" gutterBottom fontWeight={600}>
+                  Quick Tips
+                </Typography>
+                <Box style={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
+                  <Box style={{ flex: '1 1 300px', p: 2, textAlign: 'center' }}>
+                    <Typography variant="subtitle1" fontWeight={600} gutterBottom>
+                      File Format
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary">
+                      Upload your script as a .txt file or paste directly in the text area
                     </Typography>
                   </Box>
-                  
-                  <TextField
-                    multiline
-                    rows={12}
-                    fullWidth
-                    value={scriptText}
-                    onChange={(e) => setScriptText(e.target.value)}
-                    placeholder="Paste or type your script here..."
-                    sx={{
-                      flex: 1,
-                      mb: 3,
-                      '.MuiOutlinedInput-root': {
-                        backgroundColor: darkMode
-                          ? 'rgba(19, 47, 76, 0.3)'
-                          : 'rgba(255, 255, 255, 0.5)',
-                        borderRadius: 2,
-                        transition: 'all 0.3s ease',
-                        border: '1px solid',
-                        borderColor: darkMode 
-                          ? 'rgba(255, 255, 255, 0.1)' 
-                          : 'rgba(0, 0, 0, 0.1)',
-                        '&:hover': {
-                          borderColor: darkMode ? 'rgba(115, 139, 255, 0.5)' : 'rgba(67, 97, 238, 0.3)',
-                        },
-                        '&.Mui-focused': {
-                          borderColor: darkMode ? '#a4b8ff' : '#4361ee',
-                        }
-                      }
-                    }}
-                  />
-                  
-                  <Button
-                    variant="contained"
-                    onClick={handleTextSubmit}
-                    disabled={loading || !scriptText.trim()}
-                    sx={{
-                      alignSelf: 'flex-start',
-                      borderRadius: 6,
-                      px: 3,
-                      py: 1,
-                      background: 'linear-gradient(90deg, #7209b7, #4361ee)',
-                      boxShadow: '0 4px 14px rgba(114, 9, 183, 0.3)',
-                      '&:hover': {
-                        background: 'linear-gradient(90deg, #5a189a, #4361ee)',
-                        boxShadow: '0 6px 20px rgba(114, 9, 183, 0.4)',
-                      },
-                      transition: 'all 0.3s ease',
-                      fontWeight: 600
-                    }}
-                  >
-                    Process Script
-                  </Button>
-                </Paper>
-              </Box>
-              
-              {/* How It Works Section */}
-              <Paper 
-                elevation={0}
-                sx={{ 
-                  p: 4, 
-                  borderRadius: 3,
-                  background: darkMode 
-                    ? 'rgba(19, 47, 76, 0.3)'
-                    : 'rgba(255, 255, 255, 0.5)',
-                  backdropFilter: 'blur(10px)',
-                  border: `1px solid ${darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'}`,
-                  boxShadow: darkMode
-                    ? '0 4px 20px rgba(0, 0, 0, 0.15)'
-                    : '0 4px 20px rgba(0, 0, 0, 0.05)',
-                }}
-              >
-                <Typography variant="h5" gutterBottom fontWeight={700} sx={{ mb: 3 }}>
-                  How It Works
-                </Typography>
-                
-                <Grid container spacing={4}>
-                  <Grid item xs={12} md={4}>
-                    <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
-                      <Box sx={{ 
-                        minWidth: 36, 
-                        height: 36, 
-                        borderRadius: '50%', 
-                        backgroundColor: darkMode ? 'rgba(115, 139, 255, 0.2)' : 'rgba(67, 97, 238, 0.1)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mr: 2,
-                        color: darkMode ? '#a4b8ff' : '#4361ee',
-                        fontWeight: 700,
-                        fontSize: '1rem'
-                      }}>
-                        1
-                      </Box>
-                      <Box>
-                        <Typography variant="h6" gutterBottom fontWeight={600}>
-                          Upload Your Script
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary">
-                          Start by uploading your script file or pasting the text directly into our platform.
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </Grid>
-                  
-                  <Grid item xs={12} md={4}>
-                    <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
-                      <Box sx={{ 
-                        minWidth: 36, 
-                        height: 36, 
-                        borderRadius: '50%', 
-                        backgroundColor: darkMode ? 'rgba(115, 139, 255, 0.2)' : 'rgba(67, 97, 238, 0.1)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mr: 2,
-                        color: darkMode ? '#a4b8ff' : '#4361ee',
-                        fontWeight: 700,
-                        fontSize: '1rem'
-                      }}>
-                        2
-                      </Box>
-                      <Box>
-                        <Typography variant="h6" gutterBottom fontWeight={600}>
-                          AI Analysis
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary">
-                          Our AI analyzes your script, breaking down scenes, characters, locations, and more.
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </Grid>
-                  
-                  <Grid item xs={12} md={4}>
-                    <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
-                      <Box sx={{ 
-                        minWidth: 36, 
-                        height: 36, 
-                        borderRadius: '50%', 
-                        backgroundColor: darkMode ? 'rgba(115, 139, 255, 0.2)' : 'rgba(67, 97, 238, 0.1)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mr: 2,
-                        color: darkMode ? '#a4b8ff' : '#4361ee',
-                        fontWeight: 700,
-                        fontSize: '1rem'
-                      }}>
-                        3
-                      </Box>
-                      <Box>
-                        <Typography variant="h6" gutterBottom fontWeight={600}>
-                          Production Tools
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary">
-                          Access scheduling, budgeting, character breakdowns, and storyboarding tools.
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </Grid>
-                </Grid>
+                  <Box style={{ flex: '1 1 300px', p: 2, textAlign: 'center' }}>
+                    <Typography variant="subtitle1" fontWeight={600} gutterBottom>
+                      Script Structure
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary">
+                      Include scene headings, action, dialogue, and character names
+                    </Typography>
+                  </Box>
+                  <Box style={{ flex: '1 1 300px', p: 2, textAlign: 'center' }}>
+                    <Typography variant="subtitle1" fontWeight={600} gutterBottom>
+                      Best Practices
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary">
+                      Follow standard screenplay formatting for best results
+                    </Typography>
+                  </Box>
+                </Box>
               </Paper>
             </Box>
           </TabPanel>
