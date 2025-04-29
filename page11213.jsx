@@ -2,17 +2,17 @@
 
 import { useState, useCallback, useEffect } from 'react';
 // Import custom components
-import Box from './components/Box';
-import Button from './components/Button';
-import Typography from './components/Typography';
-import Paper from './components/Paper';
-import Alert from './components/Alert';
-import Grid from './components/Grid';
-import Card, { CardContent, CardHeader } from './components/Card';
-import { Tabs, Tab, TabPanel } from './components/Tabs';
-import ThemeProvider, { useTheme, createTheme } from './components/ThemeProvider';
-import Container from './components/Container';
-import { BudgetTab } from './components/budget';
+import Box from './app/components/Box';
+import Button from './app/components/Button';
+import Typography from './app/components/Typography';
+import Paper from './app/components/Paper';
+import Alert from './app/components/Alert';
+import Grid from './app/components/Grid';
+import Card, { CardContent, CardHeader } from './app/components/Card';
+import { Tabs, Tab, TabPanel } from './app/components/Tabs';
+import ThemeProvider, { useTheme, createTheme } from './app/components/ThemeProvider';
+import Container from './app/components/Container';
+import { BudgetTab } from './app/components/budget';
 
 // Import necessary components that don't have custom replacements yet
 import {
