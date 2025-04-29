@@ -35,8 +35,21 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
+  "overrides": {
+    "@mui/base": {
+      "@types/react": "^19.0.0"
+    },
+    "@mui/material": {
+      "@types/react": "^19.0.0"
+    },
+    "@mui/x-date-pickers": {
+      "react": "^19.0.0",
+      "react-dom": "^19.0.0",
+      "@types/react": "^19.0.0"
+    }
+  },
   "resolutions": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   }
 }
