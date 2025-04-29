@@ -676,28 +676,65 @@ export default function Home() {
 
   const clearAllData = async () => {
     if (window.confirm('Are you sure you want to reset all data? This action cannot be undone.')) {
+      setLoading(true);
       try {
-        // Clear API storage if available
+        // Clear API storage
         try {
-          await fetch(`${API_URL}/storage`, { method: 'DELETE' });
-        } catch (err) {
-          console.warn('API storage clear failed:', err);
+          const response = await fetch(`${API_URL}/storage`, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          
+          if (!response.ok) {
+            throw new Error(`Failed to clear API storage: ${response.status}`);
+          }
+        } catch (apiError) {
+          console.warn('API storage clear failed:', apiError);
+          // Continue with local storage clear even if API fails
         }
 
-        // Clear local storage
-        clearStorage();
+        // Clear all items from local storage
+        Object.values(STORAGE_KEYS).forEach(key => {
+          try {
+            localStorage.removeItem(key);
+          } catch (err) {
+            console.warn(`Failed to remove ${key} from localStorage:`, err);
+          }
+        });
 
-        // Reset all state
+        // Reset all state variables
         setScriptData(null);
         setOneLinerData(null);
         setCharacterData(null);
         setScheduleData(null);
         setBudgetData(null);
         setStoryboardData(null);
+        
+        // Reset form states
+        setStartDate(null);
+        setLocationConstraints({
+          preferred_locations: [],
+          avoid_weather: ["Rain", "Snow", "High Winds"]
+        });
+        setScheduleConstraints({
+          max_hours_per_day: 12,
+          meal_break_duration: 60,
+          company_moves_per_day: 2
+        });
+        setScriptText('');
+        setInputMethod('file');
+        
+        // Reset to upload tab
         setCurrentTab(0);
-        setSuccess('All data cleared successfully!');
+        
+        setSuccess('All data has been cleared successfully!');
       } catch (err) {
-        setError(err.message);
+        setError(`Failed to clear data: ${err.message}`);
+        console.error('Error clearing data:', err);
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -4371,6 +4408,8 @@ export default function Home() {
                 scriptData={scriptData}
                 scheduleData={scheduleData}
                 darkMode={darkMode}
+                apiUrl={API_URL}
+                createBudget={createBudget}
               />
             ) : (
               <Box>

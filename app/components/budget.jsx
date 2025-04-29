@@ -43,7 +43,7 @@ import { ResponsivePie } from '@nivo/pie';
 import { ResponsiveLine } from '@nivo/line';
 import { ResponsiveBar } from '@nivo/bar';
 
-export const BudgetTab = ({ scriptData, scheduleData, darkMode }) => {
+export const BudgetTab = ({ scriptData, scheduleData, darkMode, apiUrl, createBudget }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -61,25 +61,20 @@ export const BudgetTab = ({ scriptData, scheduleData, darkMode }) => {
   useEffect(() => {
     const loadBudgetData = async () => {
       try {
-        setLoading(true);
-        const response = await fetch('http://localhost:8000/api/storage/budget_results.json');
-        if (!response.ok) {
-          throw new Error('Failed to load budget data');
-        }
-        const result = await response.json();
-        console.log('Loaded budget data:', result);
+        console.log("Loading budget data...");
+        const response = await fetch('https://varun324242-sjuu.hf.space/api/storage/budget_results.json');
         
-        // Extract the actual budget data from the response
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const result = await response.json();
         if (result.success && result.data) {
           setBudgetData(result.data);
-        } else {
-          throw new Error('Invalid budget data format');
         }
-      } catch (err) {
-        setError(err.message);
-        console.error('Error loading budget data:', err);
-      } finally {
-        setLoading(false);
+      } catch (error) {
+        console.error("Error loading budget data:", error);
+        setError(error.message);
       }
     };
 
@@ -515,6 +510,28 @@ export const BudgetTab = ({ scriptData, scheduleData, darkMode }) => {
           {error}
         </Alert>
       )}
+
+      {/* Add regenerate button at the top */}
+      <Box sx={{ mb: 3, display: 'flex', justifyContent: 'flex-end' }}>
+        <Button
+          variant="contained"
+          onClick={createBudget}
+          disabled={loading}
+          startIcon={<Refresh />}
+          sx={{
+            background: darkMode
+              ? 'linear-gradient(90deg, #738bff, #ff5eb1)'
+              : 'linear-gradient(90deg, #4361ee, #f72585)',
+            '&:hover': {
+              background: darkMode
+                ? 'linear-gradient(90deg, #8599ff, #ff6eb8)'
+                : 'linear-gradient(90deg, #5472ff, #f83a91)',
+            }
+          }}
+        >
+          Regenerate Budget
+        </Button>
+      </Box>
 
       {loading ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', p: 4 }}>
