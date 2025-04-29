@@ -2,10 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
-  // Enable both App Router and Pages Router
-  experimental: {
-    appDir: true,
-  },
+  // Enable App Router (no longer experimental in Next.js 13+)
+  // Make sure it recognizes page.jsx as a valid page
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
   // Add custom error handling
   onDemandEntries: {
     // Handle errors
