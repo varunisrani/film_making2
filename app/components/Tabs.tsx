@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // Tab component
 interface TabProps {
@@ -94,11 +94,21 @@ export const Tabs = ({
   const enhancedChildren = React.Children.map(children, (child) => {
     if (!React.isValidElement(child)) return child;
     
+    // Type assertion for child props
+    const childProps = child.props as { value: number; className?: string };
+    
+    // Define specific props type for clarity
+    type TabExtraProps = {
+      selected: boolean;
+      onClick: (event: React.MouseEvent, value: number) => void;
+      className: string;
+    };
+    
     return React.cloneElement(child, {
-      selected: child.props.value === value,
+      selected: childProps.value === value,
       onClick: handleTabClick,
-      className: `${child.props.className || ''} ${child.props.value === value ? 'custom-tab-selected' : ''}`
-    } as any);
+      className: `${childProps.className || ''} ${childProps.value === value ? 'custom-tab-selected' : ''}`
+    } as TabExtraProps);
   });
 
   const getTabStyles = (): React.CSSProperties => {

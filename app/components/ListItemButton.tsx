@@ -1,6 +1,6 @@
 import { ListItemButton as MuiListItemButton, ListItemButtonProps as MuiListItemButtonProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { useTheme } from './ThemeProvider';
+
 
 export interface ListItemButtonProps extends MuiListItemButtonProps {
   glassEffect?: boolean;
@@ -52,8 +52,6 @@ const StyledListItemButton = styled(MuiListItemButton, {
 }));
 
 export default function ListItemButton({ glassEffect = false, children, ...props }: ListItemButtonProps) {
-  const { theme } = useTheme();
-  
   return (
     <StyledListItemButton
       glassEffect={glassEffect}
