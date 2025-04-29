@@ -1,26 +1,18 @@
 {
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node",
-      "config": {
-        "buildCommand": "npm install --legacy-peer-deps && npm run build"
-      }
-    }
-  ],
+  "framework": "nextjs",
+  "buildCommand": "next build",
   "rewrites": [
     { "source": "/((?!api/.*).*)", "destination": "/" }
   ],
-  "routes": [
+  "headers": [
     {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "status": 404,
-      "dest": "/404"
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "x-content-type-options",
+          "value": "nosniff"
+        }
+      ]
     }
-  ],
-  "buildCommand": "next build",
-  "framework": "nextjs"
+  ]
 } 
