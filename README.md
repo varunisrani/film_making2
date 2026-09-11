@@ -47,7 +47,7 @@ The repository also defines `npm run lint`.
 
 ## Configuration
 
-No environment variables are referenced. The API URL is hard-coded in `app/page.jsx`, so changing the backend currently requires a source edit.
+`NEXT_PUBLIC_API_URL` configures the API base used specifically by `app/hooks/useBudget.ts`; that hook falls back to `http://localhost:8000` when the variable is unset. The main workflow in `app/page.jsx` uses a separate hard-coded API base, so this environment variable does not configure all requests and changing the main backend currently requires a source edit.
 
 ## Project structure
 
